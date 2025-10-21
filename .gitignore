@@ -1,0 +1,13 @@
+*.pyc
+*.pth
+*.whl
+*.swp
+*.idea
+*.egg-info
+*.so
+build/
+__pycache__/
+.idea/
+data
+ckpts
+work_dirs
