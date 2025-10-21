@@ -28,7 +28,7 @@ Closed-loop evaluation results on Bench2Drive dataset
 | DriveTransformer | E2E-AD |     63.46     |    35.01     |   |   |
 |      ORION       |  VLM   |     77.74     |    54.62     |   |   |
 |     SimLingo     |  VLM   |     85.07     |    67.27     |   |   |
-|      HiP-AD      | E2E-AD |     86.77     |    69.09     | [config](projects/configs/hipad_b2d_stage2.py)  | [ckpt]()     |
+|      HiP-AD      | E2E-AD |     86.77     |    69.09     | [config](projects/configs/hipad_b2d_stage2.py)  | [ckpt](https://github.com/nullmax-vision/HiP-AD/releases/download/weighs/hipad_stage2.pth)     |
 
 
 ## Getting started
@@ -72,7 +72,8 @@ bash ./tools/kmeans/kemans.sh
 4. check the file structure as follows:
 ```
 HiP-AD/
-├── asset/
+├── assets/
+├── bench2drive/
 ├── ckpts/
 ├── data/
 │   ├── bench2drive
@@ -136,6 +137,7 @@ echo "$CARLA_ROOT/PythonAPI/carla/dist/carla-0.9.15-py3.7-linux-x86_64.egg" >> $
 ```bash
 python ./bench2drive/tools/split_xml.py
 ```
+
 3. change the project_dir to your path in `./projects/configs/hipad_b2d_stage2.py`
 ```bash
 project_dir = "/opt/data/private/project/HiP-AD"
@@ -147,17 +149,19 @@ export WORK_DIR=/opt/data/private/project/HiP-AD # your work dir
 export CARLA_ROOT=/opt/data/private/project/Carla # your carla path
 ```
 
-5. download pretrained [weights]() and change the weight path of TEAM_CONFIG in `./bench2drive/leaderboard/scripts/run_evaluation_multi_hipad.sh` if needed, run closed-loop evaluation, check outputs in `./evaluation/hipad_b2d_stage2`
+5. download pretrained [weights](https://github.com/nullmax-vision/HiP-AD/releases/download/weighs/hipad_stage2.pth) and change the weight path of TEAM_CONFIG in `./bench2drive/leaderboard/scripts/run_evaluation_multi_hipad.sh`
+
+6. run closed-loop evaluation and check outputs in `./evaluation/hipad_b2d_stage2`
 ```bash
 bash ./bench2drive/leaderboard/scripts/run_evaluation_multi_hipad.sh
 ```
 
-6. evaluate the closed-loop results
+7. evaluate the closed-loop results
 ```bash
 python ./bench2drive/tools/statistic_route_json.py
 ```
 
-7. create videos (optional)
+8. create videos (optional)
 ```bash
 python ./bench2drive/tools/generate_video.py
 ```
